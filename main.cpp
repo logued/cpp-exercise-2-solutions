@@ -1,5 +1,5 @@
 #include <iostream>
-//Solutions to Exercise 2                  Feb 2022
+//Solutions to Exercise 2                  Updated: Jan 2026
 
 #include <iostream>
 #include <ctime>
@@ -34,9 +34,9 @@ int main()
 
 
 // Q2 ********************************************************************************
-// If we declare and define the function above the function in which it is called,
-// then we don't need a function prototype at th etop of the program. The function
-// header is used as the function prototype.
+// If we declare and define a function before the function in which it is called,
+// then we don't need a function prototype at the top of the program. The function
+// header is used as the function prototype. This is the case below with density()
 
 double density(double width, double height, double depth, double mass)  // pass by value
 {
@@ -63,14 +63,14 @@ int charToDecimal(char c)
 
 	return static_cast<int> (c);  // C++ static cast : char to int
 
-    // a char is 1 byte long and an int is four bytes.
+    // a char is 1 byte long and an int is four bytes (usually)
     // assigning a char into a byte puts the 1 byte char value into
     // the rightmost byte of the 4-byte int
 
-    //NB, the rightmost byte in the int is a pattern of 8 bits.
+    // NB, the rightmost byte in the int is a pattern of 8 bits.
     // It can be interpreted as a char - in which case it is looked up in the ASCII table,
-    // OR, th e8 bits can be interpreted as a number, in which case the 8-bit binary pattern
-    // represents a number (an int in this case)
+    // OR, the 8 bits can be interpreted as a number, in which case the 8-bit binary pattern
+    // is output as a decimal number (an int in this case)
 }
 
 void question3()
@@ -90,18 +90,20 @@ void question4() {
 }
 
 // Pass by Reference  - (using Reference Parameters)
-// Parameters - x is a reference to an int, and it is bound to x in question() when called
+// Parameters - x is a reference to an int, and it is bound to x in question4() when called
 //              z is a reference to a double, and is bound to variable y in question4() when called
 //    ( internally, the address of x in main is passed into the parameter x in the function)
+// Reference variables/parameters must bind to some existing object/value.
 //
 void demoPassByReference(int& x, double& z)
 {
-    x = 2000;	// This WILL change the value of x in main, because here x is
+    x = 2000;	// This WILL change the value of x in main(), because here, x is
                 // a reference parameter that refers to the variable x in main().
 
     //TODO: Draw the Call-Stack, and you will see why this is so.
 
     z = 8.11;    // This WILL change the value of y in main(), because z is a reference to y in main()
+					// z is an alias for y
 }
 
 // Q5  ***************************************************************************
@@ -110,6 +112,7 @@ void increment(int& intRef)	// parameter intRef is a reference to an integer
 {
 		intRef++;   // increments the value referred to by this reference
                     // intRef refers to the variable 'num' in function question5()
+					// and so it increments variable 'num'
 }
 
 void question5()
@@ -172,7 +175,7 @@ void question7()
 void divide(int n)
 {
 	cout << "In divide() : n = " << n << endl;
-	if (n < 1) {        // stopping condition, does make recursive call, so starts a cascade of returns
+	if (n < 1) {        // stopping condition, does not make recursive call, so starts a cascade of returns
 		return;
 	}
 	else
