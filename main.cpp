@@ -211,6 +211,10 @@ void question10()
 {
 	cout << "Q10. Fibonacci sequence" << endl;
 
+	cout << "The 4th fibonacci number is: " << fibonacci(4) << endl;
+	cout << "The 2nd fibonacci number is: " << fibonacci(2) << endl;
+
+	cout << "The first 10 fibonacci numbers are: " << endl;
 	for (int i = 1; i <= 10; i++)
 		cout << fibonacci(i) << ", ";
 
